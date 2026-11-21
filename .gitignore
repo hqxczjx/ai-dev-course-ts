@@ -1,0 +1,15 @@
+node_modules/
+.env
+.DS_Store
+
+# 在线站点的构建产物
+.site/.vitepress/dist/
+.site/.vitepress/cache/
+
+# 配套代码运行时生成的数据
+code/data/
+
+# 本机工具状态
+.claude/
+.obsidian/workspace*.json
+blocks.json

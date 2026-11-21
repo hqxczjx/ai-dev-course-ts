@@ -1,0 +1,21 @@
+# 第 13 章 13.8：项目 2 的 RAG 评测配置（promptfoo 0.125.x，Node ≥ 22.22）
+# 前提：已用真实 embedding 入库（npm run ingest），.env 里配好 EMBED_* / API_KEY，
+#       评分模型用 DeepSeek（DEEPSEEK_API_KEY）；配了 RERANK_API_KEY 才会走 rerank。
+# 运行：npm run eval:rag          看报告：npx promptfoo@0.125 view
+description: 项目 2 · 企业知识库 RAG 评测（20 条）
+
+prompts:
+  - "{{query}}" # provider 直接拿问题跑整条 RAG 管道，不再套提示词模板
+
+providers:
+  # 自定义 provider：返回 output = 回答 + 「引用：文件名」，metadata.context = 送进生成的片段
+  - id: file://../src/rag/promptfoo-provider.ts
+    label: rag-hybrid-rerank
+
+defaultTest:
+  vars:
+    role: employee # 默认以普通员工身份提问；个别用例覆盖成其他角色
+  options:
+    provider: deepseek:deepseek-flash # llm-rubric / context-* 的评分模型
+
+tests: file://evals/rag-cases.yaml

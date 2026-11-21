@@ -1,0 +1,7 @@
+# 构建脚本审批（pnpm 12 默认拦截未审批的构建脚本）：tsx 依赖的 esbuild 放行；
+# 其余三个来自 LanceDB 的可选依赖 @huggingface/transformers，本课程用不到，显式拒绝以免安装报错。
+allowBuilds:
+  esbuild: true
+  onnxruntime-node: false
+  protobufjs: false
+  sharp: false

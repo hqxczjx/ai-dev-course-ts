@@ -1,0 +1,15 @@
+{
+  "name": "ai-course-site",
+  "private": true,
+  "type": "module",
+  "description": "把课程 Markdown 构建成在线文档站（VitePress）。站点工具放在隐藏目录里，不影响用 Obsidian 打开课程目录。",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.46"
+  }
+}
